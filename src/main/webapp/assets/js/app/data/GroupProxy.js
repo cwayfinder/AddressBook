@@ -14,7 +14,7 @@ Ext.define('TD.data.GroupProxy', {
         exception: function(p, response, operation, eOpts) {
             if (response.status === 401) {
 //                window.location.assign("/login.html");
-				alert('401');
+//				alert('401');
             }
         }
     },

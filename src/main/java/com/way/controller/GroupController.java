@@ -38,7 +38,7 @@ public class GroupController {
 
     @RequestMapping(value = "/groups", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
-    public ListResponse<GroupDto> getFacts(HttpSession session, HttpServletResponse response) throws IOException {
+    public ListResponse<GroupDto> getGroups(HttpServletResponse response) throws IOException {
         System.out.println("Group search.");
 
         if (getUser() == null) {
@@ -65,11 +65,8 @@ public class GroupController {
 
     @RequestMapping(value = "/groups", method = RequestMethod.POST, produces = "application/json", consumes = "application/json", headers = "Accept=application/json")
     @ResponseBody
-    public SingleResponse<GroupDto> createGroup(@RequestBody String json, HttpSession session) throws IOException {
+    public SingleResponse<GroupDto> createGroup(@RequestBody Group group) throws IOException {
         System.out.println("Group created.");
-//        Group group = new JSONDeserializer<Group>().use(null, Group.class).deserialize(json);
-        ObjectMapper mapper = new ObjectMapper();
-        Group group = mapper.readValue(json, Group.class);
         group.setUser(getUser());
         group = service.save(group);
         return new SingleResponse<GroupDto>(true, new GroupDto(group));
@@ -77,7 +74,7 @@ public class GroupController {
 
     @RequestMapping(value = "/groups/{groupId}", method = RequestMethod.PUT, produces = "application/json", consumes = "application/json")
     @ResponseBody
-    public SingleResponse<GroupDto> updateGroup(@PathVariable Long groupId, @RequestBody Group group) throws IOException {
+    public SingleResponse<GroupDto> updateGroup(@RequestBody Group group) throws IOException {
         System.out.println("Group updated.");
         group.setUser(getUser());
         group = service.save(group);
@@ -86,10 +83,10 @@ public class GroupController {
 
     @RequestMapping(value = "/groups/{id}", method = RequestMethod.DELETE, headers = "Accept=application/json")
     public ResponseEntity<String> deleteGroup(@PathVariable("id") Long id) {
-        Group base = service.findOne(id);
+        Group group = service.findOne(id);
         HttpHeaders headers = new HttpHeaders();
         headers.add("Content-Type", "application/json");
-        if (base == null) {
+        if (group == null) {
             return new ResponseEntity<String>(headers, HttpStatus.NOT_FOUND);
         }
         service.delete(id);

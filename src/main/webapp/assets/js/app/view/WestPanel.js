@@ -29,7 +29,8 @@ Ext.define('TD.view.WestPanel', {
             name: 'group',
             store: Ext.data.StoreManager.lookup('groupsStore'),
             valueField: 'id',
-            displayField: 'name'
+            displayField: 'name',
+            emptyText: 'Click "..." button to manage groups'
         }, {
             xtype: 'button',
             action: 'manageGroups',

@@ -39,10 +39,12 @@ Ext.define('TD.controller.Contact', {
                     Ext.data.StoreManager.lookup('contactsStore').load(newValue);
                 }
             },
-            'gridpanel': {
+            '#contactsListPanel > gridpanel': {
                 selectionchange: function(model, records) {
-                    this.getContactDetailsPanel().setVisible(true);
-                    this.getContactDetailsPanel().setValue(records[0]);
+                    if (records.length) {
+                        this.getContactDetailsPanel().setVisible(true);
+                        this.getContactDetailsPanel().setValue(records[0]);
+                    }
                 }
             },
             '[action=addContact]': {
