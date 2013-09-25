@@ -11,6 +11,9 @@ Ext.define('TD.controller.Contact', {
         ref: 'groupCombobox',
         selector: 'combobox[name=group]'
     }, {
+        ref: 'contactsListPanel',
+        selector: '#contactsListPanel'
+    }, {
         ref: 'contactsGrid',
         selector: '#contactsListPanel > gridpanel'
     }],
@@ -47,6 +50,8 @@ Ext.define('TD.controller.Contact', {
                 change: function (combo, newValue, oldValue, eOpts ) {
                     Ext.data.StoreManager.lookup('contactsStore').groupId = newValue;
                     Ext.data.StoreManager.lookup('contactsStore').load();
+
+                    this.getContactsListPanel().down('[action=addContact]').setDisabled(!combo.getValue());
                 }
             },
             '#contactsListPanel > gridpanel': {
@@ -55,6 +60,8 @@ Ext.define('TD.controller.Contact', {
                         this.getContactDetailsPanel().setVisible(true);
                         this.getContactDetailsPanel().setValue(records[0]);
                     }
+
+                    this.getContactsListPanel().down('[action=removeContact]').setDisabled(!records.length);
                 }
             },
             '[action=addContact]': {

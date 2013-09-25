@@ -46,11 +46,13 @@ Ext.define('TD.view.WestPanel', {
     bbar: [ '->', {
         xtype: 'button',
         action: 'addContact',
-        text: 'Add'
+        text: 'Add',
+        disabled: true
     }, {
         xtype: 'button',
         action: 'removeContact',
-        text: 'Remove'
+        text: 'Remove',
+        disabled: true
     },
     '->' ]
 });
