@@ -68,13 +68,13 @@ public class UserControllerTest {
 	@Test
 	public void registerWithValidCredentials() throws Exception {
 		mockMvc.perform(post("/registration.json").param("email", "username@example.com").param("password", "qwerty"))
-				.andExpect(content().string("{\"success\":true}"));
+				.andExpect(content().string("{\"user\":{\"id\":null,\"email\":\"username@example.com\"},\"success\":true}"));
 	}
 
 	@Test
 	public void registerWithUsedCredentials() throws Exception {
 		mockMvc.perform(post("/registration.json").param("email", "ww@ww.ww").param("password", "wwwwwww"))
-				.andExpect(content().string("{\"errors\":{\"email\":[\"User with this email already exists\"]},\"success\":false}"));
+				.andExpect(content().string("{\"errors\":{\"email\":[\"User with this email already exists. Click \\\"Use existing account\\\" button\"]},\"success\":false}"));
 	}
 
 
@@ -82,18 +82,18 @@ public class UserControllerTest {
 	@Test
 	public void loginWithEmptyCredentials() throws Exception {
 		mockMvc.perform(post("/login.json"))
-				.andExpect(content().string("{\"success\":false}"));
+				.andExpect(content().string("{\"errors\":{\"email\":[\"User with such credentials not found. Click \\\"Create new account\\\" button.\"]},\"success\":false}"));
 	}
 
 	@Test
 	public void loginWithNotUsedCredentials() throws Exception {
 		mockMvc.perform(post("/login.json").param("email", "username@example.com").param("password", "qwerty"))
-				.andExpect(content().string("{\"success\":false}"));
+				.andExpect(content().string("{\"errors\":{\"email\":[\"User with such credentials not found. Click \\\"Create new account\\\" button.\"]},\"success\":false}"));
 	}
 
 	@Test
 	public void loginWithUsedCredentials() throws Exception {
 		mockMvc.perform(post("/login.json").param("email", "ww@ww.ww").param("password", "wwwwwww"))
-				.andExpect(content().string("{\"success\":true}"));
+				.andExpect(content().string("{\"success\":true,\"user\":{\"id\":null,\"email\":\"ww@ww.ww\"}}"));
 	}
 }
