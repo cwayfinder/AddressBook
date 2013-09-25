@@ -117,9 +117,9 @@ Ext.define('TD.controller.Auth', {
 							if (json.success) {
 								user = null;
 
-								controller.getViewport().remove(controller.getContactsPanel());
-								controller.getMainPanel().removeAll();
-								controller.getMainPanel().add(Ext.create('TD.form.LoginPanel'));
+								controller.getViewport().removeAll();
+                                controller.getViewport().add(Ext.create('TD.view.MainPanel'));
+                                controller.getMainPanel().add(Ext.create('TD.form.LoginPanel'));
 							}
 						}
 					});
