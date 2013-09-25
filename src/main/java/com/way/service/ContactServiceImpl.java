@@ -44,4 +44,9 @@ public class ContactServiceImpl implements ContactService {
 	public List<Contact> findAllByGroupId(Long projectId) {
 		return repository.findAllByGroupId(projectId);
 	}
+
+    @Override
+    public Page<Contact> findAllByGroupIdAndNameLike(Long groupId, String name, Pageable pageable) {
+        return repository.findAllByGroupIdAndNameContaining(groupId, name, pageable);
+    }
 }

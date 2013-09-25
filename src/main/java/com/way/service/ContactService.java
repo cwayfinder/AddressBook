@@ -19,4 +19,6 @@ public interface ContactService {
     Page<Contact> findAllByGroupId(Long groupId, Pageable pageable);
 
     List<Contact> findAllByGroupId(Long groupId);
+
+    Page<Contact> findAllByGroupIdAndNameLike(Long groupId, String name, Pageable pageable);
 }

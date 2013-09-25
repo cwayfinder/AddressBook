@@ -14,13 +14,9 @@ Ext.define('TD.store.Contacts', {
 
     groupId: null,
 
-    load: function(groupId) {
-        if (groupId) {
-            this.groupId = groupId;
-        }
-
+    load: function(config) {
         if(this.groupId) {
-            this.getProxy().url = 'groups/' + this.groupId + '/contacts';
+            this.getProxy().url = 'groups/' + this.groupId + '/contacts' + (config && config.query ? '?query=' + config.query : '');
             this.callParent();
             this.getProxy().url = 'contacts';
         }

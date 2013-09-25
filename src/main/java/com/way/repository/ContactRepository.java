@@ -14,4 +14,6 @@ public interface ContactRepository extends JpaRepository<Contact, Long> {
     Page<Contact> findAllByGroupId(Long groupId, Pageable pageable);
 
 	List<Contact> findAllByGroupId(Long groupId);
+
+    Page<Contact> findAllByGroupIdAndNameContaining(Long groupId, String name, Pageable pageable);
 }

@@ -50,7 +50,13 @@ public class ContactController {
 
         Pageable pageable = new PageRequest(page, pageSize);
 
-        Page<Contact> contactPage = service.findAllByGroupId(groupId, pageable);
+        String query = request.getParameter("query");
+        Page<Contact> contactPage = null;
+        if (query == null || query.isEmpty()) {
+            contactPage = service.findAllByGroupId(groupId, pageable);
+        } else {
+            contactPage = service.findAllByGroupIdAndNameLike(groupId, query, pageable);
+        }
 
         List<ContactDto> dtos = new ArrayList<ContactDto>();
         for (Contact contact : contactPage) {

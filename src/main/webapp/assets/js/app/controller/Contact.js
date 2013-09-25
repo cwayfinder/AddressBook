@@ -36,7 +36,8 @@ Ext.define('TD.controller.Contact', {
             },
             'combobox[name=group]': {
                 change: function (combo, newValue, oldValue, eOpts ) {
-                    Ext.data.StoreManager.lookup('contactsStore').load(newValue);
+                    Ext.data.StoreManager.lookup('contactsStore').groupId = newValue;
+                    Ext.data.StoreManager.lookup('contactsStore').load();
                 }
             },
             '#contactsListPanel > gridpanel': {
@@ -94,6 +95,15 @@ Ext.define('TD.controller.Contact', {
                     var selection = btn.up('panel').down('gridpanel').getView().getSelectionModel().getSelection()[0];
                     if (selection) {
                         Ext.data.StoreManager.lookup('groupsStore').remove(selection);
+                    }
+                }
+            },
+            'textfield[name=query]': {
+                specialkey: function(field, e){
+                    if (e.getKey() == e.ENTER) {
+                        Ext.data.StoreManager.lookup('contactsStore').load({
+                            query: field.getValue()
+                        });
                     }
                 }
             }
