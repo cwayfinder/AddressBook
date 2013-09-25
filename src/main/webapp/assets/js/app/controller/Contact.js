@@ -52,7 +52,7 @@ Ext.define('TD.controller.Contact', {
                     var contact = Ext.create('TD.model.Contact');
                     contact.set('groupId', this.getGroupCombobox().getValue());
                     Ext.data.StoreManager.lookup('contactsStore').insert(0, contact);
-                    btn.up('panel').down('gridpanel').getPlugin('rowEditing').startEdit(0, 0);
+                    contactWindow.editContact(contact);
                 }
             },
             '[action=editContact]': {
