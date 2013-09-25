@@ -37,9 +37,11 @@ Ext.define('TD.view.WestPanel', {
             text: '...'
         } ]
     }, Ext.create('TD.view.GridPanel', {
+        cls: 'margin-top-5',
         flex: 1,
         border: true,
-        store: Ext.data.StoreManager.lookup('contactsStore')
+        store: Ext.data.StoreManager.lookup('contactsStore'),
+        emptyText: 'No contacts found. Select another group or click "Add" button to add some new contacts.'
     }) ],
     bbar: [ '->', {
         xtype: 'button',
