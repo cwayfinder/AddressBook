@@ -3,8 +3,8 @@ Ext.Loader.setConfig({
 	disableCaching: true,  // Disable random parameter in the URL's path
 	paths: {
 		'Ext': '.',
-//		'TD': '/AddressBook/assets/js/app'
-		'TD': '/assets/js/app'
+		'TD': '/AddressBook/assets/js/app'
+//		'TD': '/assets/js/app'
 	}
 });
 
