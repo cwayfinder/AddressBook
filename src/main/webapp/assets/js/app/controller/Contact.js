@@ -51,6 +51,7 @@ Ext.define('TD.controller.Contact', {
                     Ext.data.StoreManager.lookup('contactsStore').groupId = newValue;
                     Ext.data.StoreManager.lookup('contactsStore').load();
 
+                    this.getContactsListPanel().down('textfield[name=query]').setDisabled(!combo.getValue());
                     this.getContactsListPanel().down('[action=addContact]').setDisabled(!combo.getValue());
                 }
             },

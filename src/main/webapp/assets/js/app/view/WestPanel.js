@@ -19,7 +19,8 @@ Ext.define('TD.view.WestPanel', {
     items: [ {
         xtype: 'textfield',
         name: 'query',
-        emptyText: 'Search you contacts'
+        emptyText: 'Search you contacts',
+        disabled: true
     }, {
         xtype: 'panel',
         layout: 'hbox',
