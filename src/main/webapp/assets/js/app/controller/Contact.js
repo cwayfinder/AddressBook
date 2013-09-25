@@ -19,9 +19,18 @@ Ext.define('TD.controller.Contact', {
         'use strict';
 
         Ext.data.StoreManager.lookup('groupsStore').addListener('load', function(store, records) {
-            console.log('groups loaded');
             if (this.getGroupCombobox() && !this.getGroupCombobox().getValue() && records.length) {
                 this.getGroupCombobox().select(records[0]);
+            }
+        }, this);
+        Ext.data.StoreManager.lookup('groupsStore').addListener('update', function(store, record) {
+            if (this.getGroupCombobox() && !this.getGroupCombobox().getValue() && record) {
+                this.getGroupCombobox().select(record);
+            }
+        }, this);
+        Ext.data.StoreManager.lookup('groupsStore').addListener('remove', function(store, records) {
+            if (this.getGroupCombobox() && store.getCount() == 0) {
+                this.getGroupCombobox().clearValue();
             }
         }, this);
 
