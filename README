@@ -1,3 +1,6 @@
+See Task.pdf
+
+
 1. Install mysql (or another DBMS and change connection setting in jpaContext.xml)
 2. Install maven and set environment variables (M2_HOME and Path)
 3. Create database with name "addressbook" (or another name and change it in jpaContext.xml)
