@@ -1,6 +1,11 @@
 Address book web app with authorization
 =================
 
+## Used ##
+- ExtJS
+- Spring core
+- Spring Data JPA
+
 ## Functional requirements: ##
 - I want to be able to add/edit/delete contacts
 - I want to be able to search by name/surname match through my contacts
