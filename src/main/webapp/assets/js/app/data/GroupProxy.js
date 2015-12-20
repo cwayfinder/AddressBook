@@ -11,14 +11,14 @@ Ext.define('TD.data.GroupProxy', {
         type: 'json'
     },
     listeners: {
-        exception: function(p, response, operation, eOpts) {
+        exception: function (p, response, operation, eOpts) {
             if (response.status === 401) {
 //                window.location.assign("/login.html");
 //				alert('401');
             }
         }
     },
-    buildUrl: function() {
+    buildUrl: function () {
         return Ext.data.proxy.Rest.prototype.buildUrl.apply(this, arguments).replace('?', '.json?');
     }
 });

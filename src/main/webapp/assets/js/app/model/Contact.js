@@ -12,7 +12,7 @@ Ext.define('TD.model.Contact', {
         'groupId'
     ],
     validations: [
-        { type: 'length', field: 'name', min: 4 },
-        { type: 'email', field: 'email' }
+        {type: 'length', field: 'name', min: 4},
+        {type: 'email', field: 'email'}
     ]
 });

@@ -32,20 +32,20 @@ Ext.define('TD.view.ContactWindow', {
             name: 'phone'
         }]
     }],
-    bbar: [ '->', {
+    bbar: ['->', {
         xtype: 'button',
         action: 'saveContact',
         text: 'Save'
     }, {
         xtype: 'button',
         text: 'Cancel',
-        handler: function(btn) {
+        handler: function (btn) {
             btn.up('window').hide();
         }
     },
-        '->' ],
+        '->'],
 
-    editContact: function(contact) {
+    editContact: function (contact) {
         this.show();
         this.down('form').getForm().loadRecord(contact);
     }

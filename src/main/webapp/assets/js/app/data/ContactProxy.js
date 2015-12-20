@@ -10,13 +10,13 @@ Ext.define('TD.data.ContactProxy', {
     writer: {
         type: 'json'
     },
-    buildUrl: function(request) {
+    buildUrl: function (request) {
         var url = Ext.data.proxy.Rest.prototype.buildUrl.apply(this, arguments).replace('?', '.json?');
 
         if (request.action != 'read') {
             url = url.replace(/contacts\/\d\//, '');
         }
 
-        return  url;
+        return url;
     }
 });

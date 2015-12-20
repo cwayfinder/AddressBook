@@ -1,10 +1,10 @@
 Ext.define('TD.view.ContactsPanel', {
-	extend: 'Ext.panel.Panel',
+    extend: 'Ext.panel.Panel',
 
-	itemId: 'contactsPanel',
+    itemId: 'contactsPanel',
 
-	region: 'center',
-	layout: 'border',
+    region: 'center',
+    layout: 'border',
 
     items: [
         Ext.create('TD.view.CenterPanel'),

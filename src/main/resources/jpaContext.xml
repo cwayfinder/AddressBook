@@ -12,39 +12,39 @@
     <context:annotation-config/>
     <context:component-scan base-package="com.way.service,com.way.service"/>
 
-    <jpa:repositories base-package="com.way.repository" />
+    <jpa:repositories base-package="com.way.repository"/>
 
-    <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
+    <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"/>
 
     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-        <property name="persistenceUnitName" value="punit" />
-        <property name="dataSource" ref="dataSource" />
+        <property name="persistenceUnitName" value="punit"/>
+        <property name="dataSource" ref="dataSource"/>
         <property name="jpaVendorAdapter">
             <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
-                <property name="showSql" value="true" />
+                <property name="showSql" value="true"/>
             </bean>
         </property>
         <property name="jpaPropertyMap">
             <map>
                 <entry key="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect"/>
-                <entry key="hibernate.hbm2ddl.auto" value="create-drop" />
+                <entry key="hibernate.hbm2ddl.auto" value="create-drop"/>
                 <!--<entry key="hibernate.hbm2ddl.auto" value="none" />-->
-                <entry key="hibernate.format_sql" value="true" />
+                <entry key="hibernate.format_sql" value="true"/>
             </map>
         </property>
     </bean>
 
     <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
-        <property name="entityManagerFactory" ref="entityManagerFactory" />
+        <property name="entityManagerFactory" ref="entityManagerFactory"/>
     </bean>
 
-    <tx:annotation-driven transaction-manager="transactionManager" />
+    <tx:annotation-driven transaction-manager="transactionManager"/>
 
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-        <property name="driverClassName" value="com.mysql.jdbc.Driver" />
-        <property name="url" value="jdbc:mysql://localhost:3306/addressbook?autoReconnect=true" />
-        <property name="username" value="root" />
-        <property name="password" value="password" />
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/addressbook?autoReconnect=true"/>
+        <property name="username" value="root"/>
+        <property name="password" value="password"/>
     </bean>
 
 </beans>

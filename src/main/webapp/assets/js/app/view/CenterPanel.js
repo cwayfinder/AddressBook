@@ -10,11 +10,11 @@ Ext.define('TD.view.CenterPanel', {
     flex: 1,
 
     layout: {
-        type:'vbox',
-        padding:'5'
+        type: 'vbox',
+        padding: '5'
     },
 
-    items: [ {
+    items: [{
         xtype: 'displayfield',
         name: 'name'
     }, {
@@ -27,14 +27,14 @@ Ext.define('TD.view.CenterPanel', {
         fieldLabel: 'Phone',
         xtype: 'displayfield',
         name: 'phone'
-    } ],
+    }],
     bbar: [{
         xtype: 'button',
         action: 'editContact',
         text: 'Edit'
     }],
 
-    setValue: function(value) {
+    setValue: function (value) {
         if (value) {
             this.down('displayfield[name=name]').setValue(value.get('name')
                 ? '<span style="font-size: 20px;">' + value.get('name') + '</span>'

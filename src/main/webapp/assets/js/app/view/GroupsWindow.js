@@ -38,7 +38,7 @@ Ext.define('TD.view.GroupsWindow', {
             ]
         }
     ],
-    bbar: [ '->', {
+    bbar: ['->', {
         xtype: 'button',
         action: 'addGroup',
         text: 'Add'
@@ -47,5 +47,5 @@ Ext.define('TD.view.GroupsWindow', {
         action: 'removeGroup',
         text: 'Remove'
     },
-        '->' ]
+        '->']
 });

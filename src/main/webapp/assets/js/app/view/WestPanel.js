@@ -12,11 +12,11 @@ Ext.define('TD.view.WestPanel', {
     collapseMode: 'mini',
 
     layout: {
-        type:'vbox',
-        padding:'5',
-        align:'stretch'
+        type: 'vbox',
+        padding: '5',
+        align: 'stretch'
     },
-    items: [ {
+    items: [{
         xtype: 'textfield',
         name: 'query',
         emptyText: 'Search you contacts',
@@ -36,15 +36,15 @@ Ext.define('TD.view.WestPanel', {
             xtype: 'button',
             action: 'manageGroups',
             text: '...'
-        } ]
+        }]
     }, Ext.create('TD.view.GridPanel', {
         cls: 'margin-top-5',
         flex: 1,
         border: true,
         store: Ext.data.StoreManager.lookup('contactsStore'),
         emptyText: 'No contacts found. Select another group or click "Add" button to add some new contacts.'
-    }) ],
-    bbar: [ '->', {
+    })],
+    bbar: ['->', {
         xtype: 'button',
         action: 'addContact',
         text: 'Add',
@@ -55,5 +55,5 @@ Ext.define('TD.view.WestPanel', {
         text: 'Remove',
         disabled: true
     },
-    '->' ]
+        '->']
 });
